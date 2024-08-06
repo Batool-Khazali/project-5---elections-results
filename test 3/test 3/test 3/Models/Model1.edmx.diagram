@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8a02b0d274714805a15495868baac0c5" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.localCanditate" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.LocalList" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.User" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK__localCand__list___45F365D3" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Model.PartyCandidate" Width="1.5" PointX="3" PointY="5.25" />
+        <EntityTypeShape EntityType="Model.PartyList" Width="1.5" PointX="5.375" PointY="3.75" />
+        <AssociationConnector Association="Model.FK__PartyCand__list___5EBF139D" ManuallyRouted="true" >
+          <ConnectorPoint PointX="1.5" PointY="3.672587890625" />
+          <ConnectorPoint PointX="1.5" PointY="4.64680009765625" />
+          <ConnectorPoint PointX="1.8583332542330027" PointY="4.64680009765625" />
+          <ConnectorPoint PointX="1.8583332542330027" PointY="6.62474609375" />
+          <ConnectorPoint PointX="3" PointY="6.62474609375" />
+        </AssociationConnector>
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

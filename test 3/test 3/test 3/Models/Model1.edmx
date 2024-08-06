@@ -1,0 +1,296 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="localCanditate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="national_id" Type="bigint" />
+          <Property Name="name" Type="nvarchar(max)" />
+          <Property Name="listname" Type="nvarchar(max)" />
+          <Property Name="list_ID" Type="int" />
+          <Property Name="type_of_chair" Type="nvarchar" MaxLength="50" />
+          <Property Name="gender" Type="nvarchar" MaxLength="5" />
+          <Property Name="religin" Type="nvarchar" MaxLength="5" />
+          <Property Name="electionarea" Type="nvarchar(max)" />
+          <Property Name="votes_counter" Type="bigint" />
+        </EntityType>
+        <EntityType Name="LocalLists">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="listname" Type="nvarchar(max)" />
+          <Property Name="electionDistrict" Type="nvarchar(max)" />
+          <Property Name="votes_counter" Type="bigint" />
+        </EntityType>
+        <EntityType Name="PartyCandidate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="national_id" Type="bigint" />
+          <Property Name="name" Type="nvarchar(max)" />
+          <Property Name="listname" Type="nvarchar(max)" />
+          <Property Name="list_ID" Type="int" />
+          <Property Name="gender" Type="nvarchar" MaxLength="5" />
+          <Property Name="religin" Type="nvarchar" MaxLength="5" />
+          <Property Name="electionarea" Type="nvarchar(max)" />
+          <Property Name="ordercandidate" Type="bigint" />
+        </EntityType>
+        <EntityType Name="PartyLists">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="listname" Type="nvarchar(max)" />
+          <Property Name="electionarea" Type="nvarchar(max)" />
+          <Property Name="votes_counter" Type="bigint" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="electionarea" Type="nvarchar(max)" />
+          <Property Name="voteLocal" Type="bigint" />
+          <Property Name="voteParty" Type="bigint" />
+        </EntityType>
+        <Association Name="FK__localCand__list___45F365D3">
+          <End Role="LocalLists" Type="Self.LocalLists" Multiplicity="0..1" />
+          <End Role="localCanditate" Type="Self.localCanditate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LocalLists">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="localCanditate">
+              <PropertyRef Name="list_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PartyCand__list___5EBF139D">
+          <End Role="LocalLists" Type="Self.LocalLists" Multiplicity="0..1" />
+          <End Role="PartyCandidate" Type="Self.PartyCandidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LocalLists">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PartyCandidate">
+              <PropertyRef Name="list_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="localCanditate" EntityType="Self.localCanditate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LocalLists" EntityType="Self.LocalLists" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PartyCandidate" EntityType="Self.PartyCandidate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PartyLists" EntityType="Self.PartyLists" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__localCand__list___45F365D3" Association="Self.FK__localCand__list___45F365D3">
+            <End Role="LocalLists" EntitySet="LocalLists" />
+            <End Role="localCanditate" EntitySet="localCanditate" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PartyCand__list___5EBF139D" Association="Self.FK__PartyCand__list___5EBF139D">
+            <End Role="LocalLists" EntitySet="LocalLists" />
+            <End Role="PartyCandidate" EntitySet="PartyCandidate" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="localCanditate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="national_id" Type="Int64" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="listname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="list_ID" Type="Int32" />
+          <Property Name="type_of_chair" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="gender" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="religin" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="electionarea" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="votes_counter" Type="Int64" />
+          <NavigationProperty Name="LocalList" Relationship="Self.FK__localCand__list___45F365D3" FromRole="localCanditate" ToRole="LocalLists" />
+        </EntityType>
+        <EntityType Name="LocalList">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="listname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="electionDistrict" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="votes_counter" Type="Int64" />
+          <NavigationProperty Name="localCanditates" Relationship="Self.FK__localCand__list___45F365D3" FromRole="LocalLists" ToRole="localCanditate" />
+          <NavigationProperty Name="PartyCandidates" Relationship="Model.FK__PartyCand__list___5EBF139D" FromRole="LocalList" ToRole="PartyCandidate" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="electionarea" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="voteLocal" Type="Int64" />
+          <Property Name="voteParty" Type="Int64" />
+        </EntityType>
+        <Association Name="FK__localCand__list___45F365D3">
+          <End Role="LocalLists" Type="Self.LocalList" Multiplicity="0..1" />
+          <End Role="localCanditate" Type="Self.localCanditate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LocalLists">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="localCanditate">
+              <PropertyRef Name="list_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="testing_election_resultsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="localCanditates" EntityType="Self.localCanditate" />
+          <EntitySet Name="LocalLists" EntityType="Self.LocalList" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK__localCand__list___45F365D3" Association="Self.FK__localCand__list___45F365D3">
+            <End Role="LocalLists" EntitySet="LocalLists" />
+            <End Role="localCanditate" EntitySet="localCanditates" />
+          </AssociationSet>
+          <EntitySet Name="PartyCandidates" EntityType="Model.PartyCandidate" />
+          <EntitySet Name="PartyLists" EntityType="Model.PartyList" />
+          <AssociationSet Name="FK__PartyCand__list___5EBF139D" Association="Model.FK__PartyCand__list___5EBF139D">
+            <End Role="LocalList" EntitySet="LocalLists" />
+            <End Role="PartyCandidate" EntitySet="PartyCandidates" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="PartyCandidate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="national_id" Type="Int64" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="listname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="list_ID" Type="Int32" />
+          <Property Name="gender" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="religin" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="electionarea" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="LocalList" Relationship="Model.FK__PartyCand__list___5EBF139D" FromRole="PartyCandidate" ToRole="LocalList" />
+          <Property Name="ordercandidate" Type="Int64" />
+        </EntityType>
+        <EntityType Name="PartyList">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="listname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="electionarea" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="votes_counter" Type="Int64" />
+        </EntityType>
+        <Association Name="FK__PartyCand__list___5EBF139D">
+          <End Type="Model.LocalList" Role="LocalList" Multiplicity="0..1" />
+          <End Type="Model.PartyCandidate" Role="PartyCandidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LocalList">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PartyCandidate">
+              <PropertyRef Name="list_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="testing_election_resultsEntities">
+          <EntitySetMapping Name="localCanditates">
+            <EntityTypeMapping TypeName="Model.localCanditate">
+              <MappingFragment StoreEntitySet="localCanditate">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="national_id" ColumnName="national_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="listname" ColumnName="listname" />
+                <ScalarProperty Name="list_ID" ColumnName="list_ID" />
+                <ScalarProperty Name="type_of_chair" ColumnName="type_of_chair" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="religin" ColumnName="religin" />
+                <ScalarProperty Name="electionarea" ColumnName="electionarea" />
+                <ScalarProperty Name="votes_counter" ColumnName="votes_counter" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LocalLists">
+            <EntityTypeMapping TypeName="Model.LocalList">
+              <MappingFragment StoreEntitySet="LocalLists">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="listname" ColumnName="listname" />
+                <ScalarProperty Name="electionDistrict" ColumnName="electionDistrict" />
+                <ScalarProperty Name="votes_counter" ColumnName="votes_counter" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="Model.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="electionarea" ColumnName="electionarea" />
+                <ScalarProperty Name="voteLocal" ColumnName="voteLocal" />
+                <ScalarProperty Name="voteParty" ColumnName="voteParty" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PartyCandidates">
+            <EntityTypeMapping TypeName="Model.PartyCandidate">
+              <MappingFragment StoreEntitySet="PartyCandidate">
+                <ScalarProperty Name="ordercandidate" ColumnName="ordercandidate" />
+                <ScalarProperty Name="electionarea" ColumnName="electionarea" />
+                <ScalarProperty Name="religin" ColumnName="religin" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="list_ID" ColumnName="list_ID" />
+                <ScalarProperty Name="listname" ColumnName="listname" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="national_id" ColumnName="national_id" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PartyLists">
+            <EntityTypeMapping TypeName="Model.PartyList">
+              <MappingFragment StoreEntitySet="PartyLists">
+                <ScalarProperty Name="votes_counter" ColumnName="votes_counter" />
+                <ScalarProperty Name="electionarea" ColumnName="electionarea" />
+                <ScalarProperty Name="listname" ColumnName="listname" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

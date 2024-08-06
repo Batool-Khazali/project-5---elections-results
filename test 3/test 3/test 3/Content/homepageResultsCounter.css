@@ -1,0 +1,180 @@
+﻿
+.resultsPageTitleContainer {
+    position: relative;
+    display: inline-block;
+    text-transform: uppercase;
+    color: var(--bs-primary);
+}
+
+    .resultsPageTitleContainer::before {
+        content: "";
+        width: 100px;
+        position: absolute;
+        bottom: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        margin-bottom: -6px;
+        margin-left: -100px;
+        border: 1px solid var(--bs-secondary) !important;
+    }
+
+    .resultsPageTitleContainer::after {
+        content: "";
+        width: 50px;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        margin-top: -8px;
+        margin-left: -50px;
+        border: 1px solid var(--bs-primary) !important;
+    }
+
+
+/*.resultsPageTitleContainer, .resultsPageTitleContainer .col-xl-7 {
+    display: flex !important;
+    justify-content: center !important;
+    width: 100% !important;
+}*/
+
+
+ .resultsPageTitle {
+    position: relative;
+    display: inline-block;
+    text-transform: uppercase;
+    color: black;
+    font-size: 3em !important;
+}
+
+     .resultsPageTitle::before {
+        content: "" !important;
+        width: 100px !important;
+        position: absolute !important;
+        bottom: 50% !important;
+        right: 0 !important;
+        transform: translateY(-50%) !important;
+        margin-bottom: -8px !important;
+        margin-right: -100px !important;
+        border: 1px solid red !important;
+    }
+
+     .resultsPageTitle::after {
+        content: "";
+        width: 50px;
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        margin-top: -6px;
+        margin-right: -50px;
+        border: 1px solid green !important;
+    }
+
+
+
+
+
+/*** Counter Facts Start ***/
+.counter-facts {
+    background: linear-gradient(rgba(255, 255, 255, .9), rgba(255, 255, 255, 0.8)), url(../img/breadcrumb.png);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+    .counter-facts .counter.resultsCounter {
+        position: relative;
+        text-align: center;
+        width: 200px;
+        min-height: 215px;
+        padding: 10px 15px;
+        margin: 0 auto;
+        border-radius: 100px;
+        box-shadow: 0 8px 5px rgba(0, 0, 0, 0.2);
+        background: var(--bs-white);
+    }
+
+        .counter-facts .counter.resultsCounter:before {
+            content: "";
+            position: absolute;
+            height: 105px;
+            width: 100%;
+            left: 0;
+            top: 0;
+            border-radius: 10px 10px 0 0;
+            background-color: #007a3d;
+        }
+
+        .counter-facts .counter.resultsCounter .counter-icon {
+            position: relative;
+            width: 120px;
+            height: 100px;
+            margin: 0 auto 10px;
+            border-radius: 10px 10px 0 0;
+            transform: translateY(-20px);
+            font-size: 50px;
+            line-height: 90px;
+            color: var(--bs-secondary);
+            background: white;
+            clip-path: polygon(0% 0%, 100% 0, 100% 70%, 50% 100%, 0 70%);
+            box-shadow: 0 8px 5px rgba(0, 0, 0, 0.2);
+        }
+
+            .counter-facts .counter.resultsCounter .counter-icon:before {
+                content: "";
+                position: absolute;
+                width: 120px;
+                height: 90px;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                border-radius: 10px 10px 0 0;
+                background: #ce1127;
+                z-index: -1;
+                clip-path: polygon(0% 0%, 100% 0, 100% 70%, 50% 100%, 0 70%);
+                box-shadow: 0 8px 5px rgba(0, 0, 0, 0.2);
+            }
+
+        .counter-facts .counter.resultsCounter:hover .counter-icon i {
+            transform: rotate(360deg);
+            transition: all 0.3s ease;
+        }
+
+        .counter-facts .counter.resultsCounter h3 {
+            color: black;
+            font-size: 17px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin: 0 0 5px 0;
+        }
+
+    .counter-facts .counter.resultsCounter .counter-value {
+        font-size: 30px;
+        font-weight: 700;
+        display: block;
+        color: var(--bs-secondary);
+    }
+
+@media screen and (max-width: 1200px) {
+    .counter-facts .counter.resultsCounter {
+        margin-bottom: 40px;
+    }
+}
+
+
+/*  custom style  */
+
+.resultsCardsContainer {
+    display: flex;
+    justify-content: center;
+}
+
+
+.resultsCardBody {
+    margin: 2em 0;
+}
+
+
+/*** Counter Facts End ***/

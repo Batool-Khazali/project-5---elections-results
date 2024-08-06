@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="localCanditate">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="national_id" Type="bigint" />
+    <Property Name="name" Type="nvarchar(max)" />
+    <Property Name="listname" Type="nvarchar(max)" />
+    <Property Name="list_ID" Type="int" />
+    <Property Name="type_of_chair" Type="nvarchar" MaxLength="50" />
+    <Property Name="gender" Type="nvarchar" MaxLength="5" />
+    <Property Name="religin" Type="nvarchar" MaxLength="5" />
+    <Property Name="electionarea" Type="nvarchar(max)" />
+    <Property Name="votes_counter" Type="bigint" />
+  </EntityType>
+  <EntityType Name="LocalLists">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="listname" Type="nvarchar(max)" />
+    <Property Name="electionDistrict" Type="nvarchar(max)" />
+    <Property Name="votes_counter" Type="bigint" />
+  </EntityType>
+  <EntityType Name="PartyCandidate">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="national_id" Type="bigint" />
+    <Property Name="name" Type="nvarchar(max)" />
+    <Property Name="listname" Type="nvarchar(max)" />
+    <Property Name="list_ID" Type="int" />
+    <Property Name="gender" Type="nvarchar" MaxLength="5" />
+    <Property Name="religin" Type="nvarchar" MaxLength="5" />
+    <Property Name="electionarea" Type="nvarchar(max)" />
+    <Property Name="ordercandidate" Type="bigint" />
+  </EntityType>
+  <EntityType Name="PartyLists">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="listname" Type="nvarchar(max)" />
+    <Property Name="electionarea" Type="nvarchar(max)" />
+    <Property Name="votes_counter" Type="bigint" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="electionarea" Type="nvarchar(max)" />
+    <Property Name="voteLocal" Type="bigint" />
+    <Property Name="voteParty" Type="bigint" />
+  </EntityType>
+  <Association Name="FK__localCand__list___45F365D3">
+    <End Role="LocalLists" Type="Self.LocalLists" Multiplicity="0..1" />
+    <End Role="localCanditate" Type="Self.localCanditate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LocalLists">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="localCanditate">
+        <PropertyRef Name="list_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PartyCand__list___5EBF139D">
+    <End Role="LocalLists" Type="Self.LocalLists" Multiplicity="0..1" />
+    <End Role="PartyCandidate" Type="Self.PartyCandidate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LocalLists">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PartyCandidate">
+        <PropertyRef Name="list_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="localCanditate" EntityType="Self.localCanditate" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LocalLists" EntityType="Self.LocalLists" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PartyCandidate" EntityType="Self.PartyCandidate" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PartyLists" EntityType="Self.PartyLists" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__localCand__list___45F365D3" Association="Self.FK__localCand__list___45F365D3">
+      <End Role="LocalLists" EntitySet="LocalLists" />
+      <End Role="localCanditate" EntitySet="localCanditate" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PartyCand__list___5EBF139D" Association="Self.FK__PartyCand__list___5EBF139D">
+      <End Role="LocalLists" EntitySet="LocalLists" />
+      <End Role="PartyCandidate" EntitySet="PartyCandidate" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

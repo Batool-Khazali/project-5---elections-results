@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="testing_election_resultsEntities">
+    <EntitySetMapping Name="localCanditates">
+      <EntityTypeMapping TypeName="Model.localCanditate">
+        <MappingFragment StoreEntitySet="localCanditate">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="national_id" ColumnName="national_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="listname" ColumnName="listname" />
+          <ScalarProperty Name="list_ID" ColumnName="list_ID" />
+          <ScalarProperty Name="type_of_chair" ColumnName="type_of_chair" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="religin" ColumnName="religin" />
+          <ScalarProperty Name="electionarea" ColumnName="electionarea" />
+          <ScalarProperty Name="votes_counter" ColumnName="votes_counter" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LocalLists">
+      <EntityTypeMapping TypeName="Model.LocalList">
+        <MappingFragment StoreEntitySet="LocalLists">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="listname" ColumnName="listname" />
+          <ScalarProperty Name="electionDistrict" ColumnName="electionDistrict" />
+          <ScalarProperty Name="votes_counter" ColumnName="votes_counter" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="Model.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="electionarea" ColumnName="electionarea" />
+          <ScalarProperty Name="voteLocal" ColumnName="voteLocal" />
+          <ScalarProperty Name="voteParty" ColumnName="voteParty" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PartyCandidates">
+      <EntityTypeMapping TypeName="Model.PartyCandidate">
+        <MappingFragment StoreEntitySet="PartyCandidate">
+          <ScalarProperty Name="ordercandidate" ColumnName="ordercandidate" />
+          <ScalarProperty Name="electionarea" ColumnName="electionarea" />
+          <ScalarProperty Name="religin" ColumnName="religin" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="list_ID" ColumnName="list_ID" />
+          <ScalarProperty Name="listname" ColumnName="listname" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="national_id" ColumnName="national_id" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PartyLists">
+      <EntityTypeMapping TypeName="Model.PartyList">
+        <MappingFragment StoreEntitySet="PartyLists">
+          <ScalarProperty Name="votes_counter" ColumnName="votes_counter" />
+          <ScalarProperty Name="electionarea" ColumnName="electionarea" />
+          <ScalarProperty Name="listname" ColumnName="listname" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
